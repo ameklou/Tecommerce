@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:tshop/wine_details.dart';
 
 Widget WineCard(wine) {
   return Padding(
     padding: EdgeInsets.all((10)),
     child: InkWell(
-      onTap: () {},
+      onTap: () {
+        BuildContext context;
+        Navigator.push(context, MaterialPageRoute(
+          builder: (context)=>WineDetail(wineDetail: wine,)
+        ));
+      },
       child: Container(
         width: 200,
         decoration: BoxDecoration(
