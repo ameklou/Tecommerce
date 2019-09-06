@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:tshop/wine_details.dart';
+import 'package:tshop/screens/wine_details.dart';
 
-Widget WineCard(wine) {
+Widget WineCard(wine, BuildContext context) {
   return Padding(
     padding: EdgeInsets.all((10)),
     child: InkWell(
       onTap: () {
-        BuildContext context;
+        print(wine.title);
+
         Navigator.push(context, MaterialPageRoute(
           builder: (context)=>WineDetail(wineDetail: wine,)
         ));
+
+//        Navigator.of(context).push(MaterialPageRoute(
+//            builder: (context) => WineDetail(wineDetail: wine)));
+
       },
       child: Container(
         width: 200,
@@ -28,6 +33,15 @@ Widget WineCard(wine) {
               width: 200,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10), color: Colors.white),
+            ),
+            Container(
+              height: 160.0,
+              width: 200.0,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10.0),
+                      topRight: Radius.circular(10.0)),
+                  color: wine.bgColor),
             ),
             Padding(
               padding: EdgeInsets.only(top: 20),
@@ -90,10 +104,10 @@ Widget WineCard(wine) {
                       getRatingStar(wine.rating, 5),
                       SizedBox(width: 3,),
                       Text(wine.rating.roundToDouble().toString(),
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Color(0xFF199693)
-                      ),)
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Color(0xFF199693)
+                        ),)
 
                     ],
                   )
